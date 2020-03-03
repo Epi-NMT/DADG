@@ -13,9 +13,11 @@ To reproduce the result of PACS on AlexNet:
 Run "run_PACS.sh" to reproduce the result (target domain: cartoon) of PACS on AlexNet.
 
 To reproduce the result of other domains, change the command in "run_PACS.sh" to:
+
 python run_idea.py --source _ _ _ --target _
 
 To reproduce the result on ResNet18, change the command in "run_PACS.sh" to:
+
 python run_idea.py --source _ _ _ --target _ --iteration 1000 --model_name resnet18
 
 Add the domain name on "_". (P/A/C/S)
