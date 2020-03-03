@@ -182,8 +182,6 @@ class GradReverse(Function):
 
 
 class NetD_resnet(nn.Module):
-    """AlexNet Discriminator for Meta-Learning Domain Generalization(MLADG) on PACS"""
-
     def __init__(self, num_domains=2):
         super(NetD_resnet, self).__init__()
 
@@ -204,8 +202,6 @@ class NetD_resnet(nn.Module):
 
 
 class NetD_alexnet(nn.Module):
-    """AlexNet Discriminator for Meta-Learning Domain Generalization(MLADG) on PACS"""
-
     def __init__(self, num_domains=2):
         super(NetD_alexnet, self).__init__()
 
