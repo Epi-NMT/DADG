@@ -1,7 +1,7 @@
-KDD2020: DADG
-Source code of: Discriminative Adversarial Domain Generalization with Meta-learning based Cross-domain Validation
+# Source code of: Discriminative Adversarial Domain Generalization with Meta-learning based Cross-domain Validation
 
 Reproduce the paper:
+
 Preparation:
 1. Get data:
 Please download the folder "data" from: https://drive.google.com/open?id=1CpXITj6wgkCkf3P-fgi2c-1IAosM06sU, and store the folder at the same path of code.
