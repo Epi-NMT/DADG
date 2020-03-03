@@ -1,4 +1,4 @@
-# Source code of: Discriminative Adversarial Domain Generalization with Meta-learning based Cross-domain Validation
+# Source code of: "Discriminative Adversarial Domain Generalization with Meta-learning based Cross-domain Validation"
 
 Reproduce the paper:
 
