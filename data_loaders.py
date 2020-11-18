@@ -44,7 +44,7 @@ class _Dataset(Dataset):
 class OH_Loader():
     def __init__(self, flags):
 
-        self.img_path = 'D:/DG/Office_Home/IMG'
+        self.img_path = './data/Office_Home/IMG'
         self.source = flags.source
         self.target = flags.target
         # random pick one domain in source domain as meta-test domain
@@ -57,7 +57,7 @@ class OH_Loader():
         self.test_batchsz = flags.test_batchsz
 
     def loader(self, domain):
-        file = 'D:/DG/Office_Home/txt/{}.txt'.format(domain)
+        file = './data/Office_Home/txt/{}.txt'.format(domain)
         data = _Dataset(file, self.img_path)
         out_loader = Data.DataLoader(data, batch_size=self.train_batchsz, shuffle=True, num_workers=0)
         return out_loader
@@ -73,7 +73,7 @@ class OH_Loader():
 
     def test_loader(self):
 
-        test_file = 'D:/DG/Office_Home/txt/{}.txt'.format(self.target)
+        test_file = './data/Office_Home/txt/{}.txt'.format(self.target)
         test = _Dataset(test_file, self.img_path)
         test_loader = Data.DataLoader(test, batch_size=self.test_batchsz, shuffle=True, num_workers=0)
 
@@ -82,7 +82,7 @@ class OH_Loader():
 class PACS_Loader():
     def __init__(self, flags):
 
-        self.img_path = 'D:/DG/PACS/kfold'
+        self.img_path = './data/PACS/kfold'
         self.source = flags.source
         self.target = flags.target
         # random pick one domain in source domain as meta-test domain
@@ -96,7 +96,7 @@ class PACS_Loader():
         self.test_batchsz = flags.test_batchsz
 
     def loader(self, domain):
-        file = 'D:/DG/PACS/txt/{}.txt'.format(domain)
+        file = './data/PACS/txt/{}.txt'.format(domain)
         data = _Dataset(file, self.img_path)
         out_loader = Data.DataLoader(data, batch_size=self.train_batchsz, shuffle=True, num_workers=0)
         return out_loader
@@ -112,7 +112,7 @@ class PACS_Loader():
 
     def test_loader(self):
 
-        test_file = 'D:/DG/PACS/txt/{}.txt'.format(self.target)
+        test_file = './data/PACS/txt/{}.txt'.format(self.target)
         test = _Dataset(test_file, self.img_path)
         test_loader = Data.DataLoader(test, batch_size=self.test_batchsz, shuffle=True, num_workers=0)
         return test_loader
@@ -121,7 +121,7 @@ class VLCS_Loader():
 
     def __init__(self, flags):
 
-        self.img_path = 'D:/DG/VLCS/IMG'
+        self.img_path = './data/DG/VLCS/IMG'
         self.source = flags.source
         self.target = flags.target
         # random pick one domain in source domain as meta-test domain
@@ -135,7 +135,7 @@ class VLCS_Loader():
         self.test_batchsz = flags.test_batchsz
 
     def loader(self, domain):
-        file = 'D:/DG/VLCS/txt_file/{}_train.txt'.format(domain)
+        file = './data/VLCS/txt_file/{}_train.txt'.format(domain)
         data = _Dataset(file, self.img_path)
         out_loader = Data.DataLoader(data, batch_size=self.train_batchsz, shuffle=True, num_workers=0)
         return out_loader
@@ -150,7 +150,7 @@ class VLCS_Loader():
 
     def test_loader(self):
 
-        test_file = 'D:/DG/VLCS/txt_file/{}_train.txt'.format(self.target)
+        test_file = './data/VLCS/txt_file/{}_train.txt'.format(self.target)
         test = _Dataset(test_file, self.img_path)
         test_loader = Data.DataLoader(test, batch_size=self.test_batchsz, shuffle=True, num_workers=0)
         return test_loader
