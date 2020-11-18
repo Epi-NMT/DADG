@@ -10,7 +10,6 @@ from alexnet import Id
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-
 class AlexNetCaffe(nn.Module):
     def __init__(self,  n_classes=100, dropout=True):
         super(AlexNetCaffe, self).__init__()
@@ -83,8 +82,6 @@ def alexnet(num_class):
     model.load_state_dict(state_dict, strict=False)
     return model
 
-
-
 class NetE_alexnet(nn.Module):
 
     def __init__(self, classes):
@@ -142,11 +139,11 @@ class NetE_resnet(nn.Module):
 
 class NetC_resnet(nn.Module):
 
-    def __init__(self):
+    def __init__(self, classes):
         super(NetC_resnet, self).__init__()
 
         self.net = nn.Sequential(
-            nn.Linear(512, 7)
+            nn.Linear(2048, classes)
         )
 
     def forward(self, input):
@@ -163,7 +160,7 @@ def nets(model, classes):
 
     elif model == 'resnet18':
         netE = NetE_resnet()
-        netC = NetC_resnet()
+        netC = NetC_resnet(classes)
         return netE, netC, NetD_resnet()
 
 
@@ -182,19 +179,21 @@ class GradReverse(Function):
 
 
 class NetD_resnet(nn.Module):
-    def __init__(self, num_domains=2):
+    """AlexNet Discriminator for Meta-Learning Domain Generalization(MLADG) on PACS"""
+
+    def __init__(self, discriminate=1):
         super(NetD_resnet, self).__init__()
 
         self.layer = nn.Sequential(
-            nn.Linear(512, 4096),
+            nn.Linear(2048, 4096),
             nn.ReLU(),
             nn.Linear(4096, 4096),
             nn.ReLU(),
-            nn.Linear(4096, num_domains),
-            nn.LogSoftmax()
+            nn.Linear(4096, discriminate),
+            nn.Sigmoid(),
         )
 
-    def forward(self, input):
+    def forward(self, input, iter, total_iter):
         """Forward the discriminator with a backward reverse layer"""
         input = GradReverse.grad_reverse(input, constant=1)
         out = self.layer(input)
@@ -202,7 +201,9 @@ class NetD_resnet(nn.Module):
 
 
 class NetD_alexnet(nn.Module):
-    def __init__(self, num_domains=2):
+    """AlexNet Discriminator for Meta-Learning Domain Generalization(MLADG) on PACS"""
+
+    def __init__(self, discriminate=1):
         super(NetD_alexnet, self).__init__()
 
         self.layer = nn.Sequential(
@@ -210,10 +211,11 @@ class NetD_alexnet(nn.Module):
             nn.ReLU(),
             nn.Linear(4096, 4096),
             nn.ReLU(),
-            nn.Linear(4096, num_domains),
+            nn.Linear(4096, discriminate),
+            nn.Sigmoid(),
         )
 
-    def forward(self, input):
+    def forward(self, input, iter, total_iter):
         """Forward the discriminator with a backward reverse layer"""
         input = GradReverse.grad_reverse(input, constant=1)
         out = self.layer(input)
