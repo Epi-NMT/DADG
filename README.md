@@ -4,7 +4,7 @@ Reproduce the paper:
 
 Preparation:
 1. Get data:
-Please download the folder "data" from: https://drive.google.com/drive/folders/1CpXITj6wgkCkf3P-fgi2c-1IAosM06sU?usp=sharing, and store the folder at the same path of code.
+Please download the folder "data" from: https://drive.google.com/file/d/125Ks-0Au9VNa9LifeveV2wKvx4k4lw6D/view?usp=sharing, and store the folder at the same path of code.
 
 2. Please download the alexnet model from: https://drive.google.com/file/d/1WkDSnZYofOnK39-OW2oXZlJjmhlzXdKx/view?usp=sharing, and store the folder at the same path of code.
 Create two empty folders: "Best_models" and "netD", for store the models and Discriminators.
