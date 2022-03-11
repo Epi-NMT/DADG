@@ -4,7 +4,7 @@
 
     1.1 Get data:
   
-      Please download the folder "data" from: https://drive.google.com/file/d/1Ul1FFsGuJjAfphngxKD6igt5O5B86oyq/view?usp=sharing, and store the folder at the same path of code.
+      Please download the folder "data" from: https://drive.google.com/file/d/1oLx0-iOIoci0yLo093HGqkFnBFyC6imM/view?usp=sharing, and store the folder at the same path of code.
 
     1.2 Load the pretrain AlexNet:
   
